@@ -9,3 +9,11 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Music {
+  id Int @id @default(autoincrement())
+  name String  
+  embeddings Unsupported("vector(4096)")? 
+
+  @@index([embeddings])
+}
