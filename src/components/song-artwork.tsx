@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-import { MusicToChose } from "@/interface/Music";
+import { MusicToChoose } from "@/interface/Music";
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
-  song: MusicToChose;
+  song: MusicToChoose;
   aspectRatio?: "portrait" | "square";
   width?: number;
   height?: number;
@@ -50,9 +50,9 @@ export function SongArtwork({
           <h3 className="font-xl leading-none text-center">
             <b>{song.name}</b>
           </h3>
-          {/* <p className="text-xs text-muted-foreground text-center">
-            {song.artist}
-          </p> */}
+          <p className="text-xs text-muted-foreground text-center">
+            {song.author}
+          </p>
         </div>
       </a>
     </div>

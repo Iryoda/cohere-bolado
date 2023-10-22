@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { calculateSearchParams } from "@/utils/calculate-search-params";
 import { initialSongs } from "../../config/data";
-import { MusicToChose } from "@/interface/Music";
+import { MusicToChoose } from "@/interface/Music";
 
 export default function Playlist() {
-  const [songs, setSongs] = useState<MusicToChose[]>(() => {
+  const [songs, setSongs] = useState<MusicToChoose[]>(() => {
     const array = [...initialSongs];
 
     array.sort((a, b) => 0.5 - Math.random());
