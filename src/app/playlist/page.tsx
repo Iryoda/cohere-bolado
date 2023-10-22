@@ -7,10 +7,12 @@ import { useEffect, useRef, useState } from "react";
 import { Music } from "@/interface/Music";
 import { getRandomInt } from "@/utils/get-n-neighbors";
 
+import backChevron from "public/back_chevron.png";
 import youtubeIcon from "public/logo_youtube_icon.png";
 import spotifyIcon from "public/logo_spotify_icon.png";
 import Image from "next/image";
 import { generateYoutubeUrl, generateSpotifyUrl } from "@/utils/generate-url";
+import Link from "next/link";
 
 const emojiList = ["😳", "❤️", "🎧", "🎶"];
 
@@ -54,7 +56,10 @@ export default function MountedPlaylist() {
   return (
     <>
       <div className="h-full flex flex-col space-y-8 p-8 md:flex">
-        <div className="flex items-center justify-between space-y-2">
+        <div className="flex items-center space-y-2">
+          <Link href="/">
+            <Image className="w-7 mr-4" src={backChevron} alt="Go back" />
+          </Link>
           <div>
             <h2 className="text-2xl font-bold tracking-tight">
               Your Playlist!
@@ -89,7 +94,7 @@ export default function MountedPlaylist() {
                   className="text-lg hover:bg-blue-50 border-b-slate-200 border-b-2 leading-loose"
                   key={m.id}
                 >
-                  <td>
+                  <td className="pl-4">
                     <b className="text-gray-500">{i + 1}</b>
                   </td>
                   <td className="capitalize">{m.name}</td>
@@ -106,7 +111,11 @@ export default function MountedPlaylist() {
                       href={generateYoutubeUrl(`${m.name} ${m.author}`)}
                       target="_blank"
                     >
-                      <Image className="w-7 ml-4" src={youtubeIcon} alt="YouTube" />
+                      <Image
+                        className="w-7 ml-4"
+                        src={youtubeIcon}
+                        alt="YouTube"
+                      />
                     </a>
                   </td>
                 </tr>

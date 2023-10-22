@@ -7,6 +7,7 @@ import Link from "next/link";
 import { calculateSearchParams } from "@/utils/calculate-search-params";
 import { initialSongs } from "../../config/data";
 import { MusicToChoose } from "@/interface/Music";
+import { getRandomInt } from "@/utils/get-n-neighbors";
 
 export default function Playlist() {
   const [songs, setSongs] = useState<MusicToChoose[]>(() => {
@@ -47,13 +48,16 @@ export default function Playlist() {
   const handleClick = (i: number) => {
     if (counter.current >= 4) return;
 
-    const newSongs = remainingSongList.current.shift();
+    const [newSong] = remainingSongList.current.splice(
+      getRandomInt(remainingSongList.current.length),
+      1
+    );
 
     counter.current++;
 
-    if (newSongs)
+    if (newSong)
       setSongs((songs) => {
-        songs[i] = newSongs;
+        songs[i] = newSong;
         return [...songs];
       });
   };
