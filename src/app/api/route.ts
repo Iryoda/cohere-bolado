@@ -7,8 +7,6 @@ import { Client } from "pg";
 export async function GET(req: NextRequest) {
   const preferences = req.nextUrl.searchParams.get("preferences");
 
-  console.log(preferences);
-
   if (!preferences) {
     return new Response("PUTSS", {
       status: 400,
@@ -46,13 +44,11 @@ export async function GET(req: NextRequest) {
 
     await db.end();
 
-    console.log(musics);
-
     return NextResponse.json(musics);
   } catch (error) {
     console.log(error);
 
-    return new Response("PUTSS", {
+    return new Response("DEU RUIM PAPAI", {
       status: 400,
     });
   }
