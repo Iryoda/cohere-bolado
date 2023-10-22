@@ -33,5 +33,5 @@ export enum EmotionLevel {
 export type Song = {
   name: string;
   embedding: number[];
-  emotions: { [key in Emotions]: EmotionLevel };
+  emotions: { [key in Emotions]: `${EmotionLevel}` };
 };

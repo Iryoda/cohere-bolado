@@ -1,11 +1,10 @@
 import Image from "next/image";
 
 import { cn } from "@/lib/utils";
-
-import { Album } from "../data/songs";
+import { MusicToChose } from "@/interface/Music";
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
-  song: Album;
+  song: MusicToChose;
   aspectRatio?: "portrait" | "square";
   width?: number;
   height?: number;
@@ -25,7 +24,7 @@ export function SongArtwork({
     <div {...props}>
       <div className={`rounded-lg${disabled ? " bg-green-300 m-0 p-0" : ""}`}>
         <Image
-          src={song.cover}
+          src={song.url}
           alt={song.name}
           width={width}
           height={height}
@@ -41,7 +40,11 @@ export function SongArtwork({
       </div>
 
       <a
-        href={`https://www.youtube.com/results?search_query=${`${song.name} ${song.artist}`.replace(
+        // href={`https://www.youtube.com/results?search_query=${`${song.name} ${song.artist}`.replace(
+        //   /\s/g,
+        //   "+"
+        // )}`}
+        href={`https://www.youtube.com/results?search_query=${`${song.name}`.replace(
           /\s/g,
           "+"
         )}`}
@@ -51,9 +54,9 @@ export function SongArtwork({
           <h3 className="font-xl leading-none text-center">
             <b>{song.name}</b>
           </h3>
-          <p className="text-xs text-muted-foreground text-center">
+          {/* <p className="text-xs text-muted-foreground text-center">
             {song.artist}
-          </p>
+          </p> */}
         </div>
       </a>
     </div>
