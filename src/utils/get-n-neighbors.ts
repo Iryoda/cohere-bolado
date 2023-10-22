@@ -27,7 +27,7 @@ const getNNeighbors = (
         )
       );
       console.info(
-        `Visited all songs, breaking (searched maxDistance = ${maxDistance}, real maxDistance = ${realMaxDistance})`
+        `Visited all songs, breaking (searched maxDistance = ${maxDistance}, next bigger maxDistance = ${realMaxDistance}) (Searched ${n} but found ${neighbors.length})`
       );
       break;
     }
