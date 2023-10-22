@@ -11,6 +11,8 @@ import {
   calculateSearchParams,
   musicParams,
 } from "@/utils/calculate-search-params";
+import { initHeapProfiler } from "next/dist/build/swc";
+import { initialSongs } from "../../../config/data";
 
 const initialValues: { [key in string]: musicParams } = {
   "dating:": "Very Low",
@@ -38,7 +40,7 @@ const initialValues: { [key in string]: musicParams } = {
 };
 
 export default function Playlist() {
-  const [songs, setSongs] = useState(madeForYouAlbums.filter((_, i) => i < 3));
+  const [songs, setSongs] = useState(initialSongs);
   const [preferences, setPreferences] = useState(initialValues);
   const [isCalculating, setIsCalculating] = useState(false);
 
