@@ -1,38 +1,28 @@
 "use client";
 
-import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area"
-import { Separator } from "@/registry/new-york/ui/separator"
+import { Separator } from "@/registry/new-york/ui/separator";
 
-import { AlbumArtwork } from "@/components/album-artwork"
-import { madeForYouAlbums } from "@/data/albums"
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Home() {
+  // const router = useRouter();
+
   return (
     <>
       <div className="mt-6 space-y-1">
-        <h2 className="text-2xl font-semibold tracking-tight">Made for You</h2>
+        <h2 className="text-2xl font-semibold tracking-tight">
+          Welcome to Sambify
+        </h2>
         <p className="text-sm text-muted-foreground">
-          Your personal playlists. Updated daily.
+          The plaform that chooses the right playlist for you, with AI
         </p>
       </div>
       <Separator className="my-4" />
-      <div className="relative">
-        <ScrollArea>
-          <div className="flex space-x-4 pb-4">
-            {madeForYouAlbums.map((album) => (
-              <AlbumArtwork
-                key={album.name}
-                album={album}
-                className="w-[150px]"
-                aspectRatio="square"
-                width={150}
-                height={150}
-              />
-            ))}
-          </div>
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
-      </div>
+      <Link href="/playlist">
+        <Button>Generate new playlist</Button>
+      </Link>
     </>
   );
 }
