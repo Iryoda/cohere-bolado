@@ -28,26 +28,23 @@ export async function GET(req: NextRequest) {
 
     const inputEmebedding = `[${response.body.embeddings[0]}]`;
 
-    db.connect();
-
     // Eu sou burro não está funcionando
     // const res =
     //   await prisma.$queryRaw`SELECT * FROM music ORDER BY embeddings <-> VECTOR(${inputEmebedding}) LIMIT 10`;
     // console.log(res);
 
     const rows = await db.query(
-      `SELECT * FROM music ORDER BY embeddings <-> '${inputEmebedding}' LIMIT 10`
+      `SELECT * FROM music ORDER BY embeddings <-> '${inputEmebedding}' LIMIT 50`
     );
 
     const musics = rows.rows.map((r) => ({
       name: r.name,
     }));
 
-    await db.end();
-
     return NextResponse.json(musics);
   } catch (error) {
     console.log(error);
+    console.info(error);
 
     return new Response("DEU RUIM PAPAI", {
       status: 400,

@@ -3,12 +3,12 @@
 import { Metadata } from "next";
 import axios from "axios";
 
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Music } from "@/interface/Music";
 
 export default function MountedPlaylist() {
-  const params = useParams();
+  const searchParams = useSearchParams();
 
   const [musics, setMusics] = useState<Music[]>([]);
   const [queryState, setQueryState] = useState({
@@ -18,14 +18,20 @@ export default function MountedPlaylist() {
 
   useEffect(() => {
     const handle = async () => {
-      if (params) {
+      if (searchParams) {
         try {
           const { data } = await axios.get<Music[]>(
-            "https://localhost:3333/api",
-            { params: { preferences: params.preferences } }
+            `http://localhost:3000/api?preferences=${searchParams.get(
+              "preferences"
+            )}`
           );
 
           setMusics(data);
+
+          setQueryState({
+            isLoading: false,
+            isError: false,
+          });
         } catch (error) {
           setQueryState({
             isLoading: false,
@@ -36,7 +42,8 @@ export default function MountedPlaylist() {
     };
 
     handle();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

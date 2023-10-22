@@ -45,6 +45,8 @@ export default function Playlist() {
   }, [remainingSongList, counter.current]);
 
   const handleClick = (i: number) => {
+    if (counter.current >= 4) return;
+
     const newSongs = remainingSongList.current.shift();
 
     counter.current++;
@@ -103,7 +105,10 @@ export default function Playlist() {
           </Button>
         ) : (
           <Link
-            href={{ pathname: "playlist", query: { type: preferences as any } }}
+            href={{
+              pathname: "playlist",
+              query: { preferences: preferences as any },
+            }}
           >
             <Button className="text-large text-white p-4">
               Generate playlist
