@@ -6,7 +6,7 @@ const { PrismaClient } = require("@prisma/client");
 const Handle = async () => {
   const prisma = new PrismaClient();
 
-  const csvPath = path.join(__dirname, "..", "files", "v1-reduced.csv");
+  const csvPath = path.join(__dirname, "..", "files", "v2.csv");
   await new Promise((res, rej) => {
     fs.createReadStream(csvPath)
       .pipe(
