@@ -14,7 +14,7 @@ const getNNeighbors = (
   const neighbors: Song[] = [];
   const unvisitedSongs: Song[] = [...options];
 
-  let lowestUnreachedDistance = -Infinity;
+  let lowestUnreachedDistance = Infinity;
 
   while (neighbors.length < n) {
     // If all songs visited, break
