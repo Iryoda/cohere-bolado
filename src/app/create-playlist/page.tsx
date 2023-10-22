@@ -2,8 +2,8 @@
 
 import { ScrollArea, ScrollBar } from "@/registry/new-york/ui/scroll-area";
 
-import { AlbumArtwork } from "@/components/album-artwork";
-import { madeForYouAlbums } from "@/data/albums";
+import { SongArtwork } from "@/components/song-artwork";
+import { madeForYouAlbums } from "@/data/songs";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -12,7 +12,7 @@ import {
   musicParams,
 } from "@/utils/calculate-search-params";
 
-const initialValues: { [key: musicLabels]: musicParams } = {
+const initialValues: { [key in string]: musicParams } = {
   "dating:": "Very Low",
   " violence:": "Very Low",
   " world/life:": "Very Low",
@@ -48,7 +48,7 @@ export default function Playlist() {
 
   useEffect(() => {
     if (!remainingSongList.current.length) {
-      setPreferences(calculateSearchParams(songs[0], songs[1], songs[2]));
+      // setPreferences(calculateSearchParams(songs[0], songs[1], songs[2]));
 
       setIsCalculating(true);
     }
@@ -64,6 +64,8 @@ export default function Playlist() {
       });
   };
 
+  const endedSelection = !remainingSongList.current.length && !isCalculating;
+
   return (
     <div className="p-8 h-screen flex flex-col justify-between">
       <div className="mt-6 space-y-1 items-center">
@@ -77,31 +79,43 @@ export default function Playlist() {
       </div>
 
       <div className="relative flex flex-col items-center w-full h-full justify-center">
-        <ScrollArea>
-          <div className="flex space-x-24 justify-center">
-            {songs.map((album, i) => (
-              <AlbumArtwork
-                key={album.name}
+        <div className="flex space-x-24 justify-center">
+          {songs.map((song, i) => (
+            <div
+              key={song.name}
+              className={
+                i
+                  ? i > 1
+                    ? "rotate-12 -translate-x-10 translate-y-10 z-2"
+                    : "z-1"
+                  : "-rotate-12 translate-x-10 translate-y-10"
+              }
+            >
+              <SongArtwork
                 onClick={() => handleClick(i)}
-                album={album}
+                song={song}
                 aspectRatio="portrait"
                 width={300}
                 height={300}
+                disabled={!remainingSongList.current.length && !isCalculating}
               />
-            ))}
-          </div>
-          <ScrollBar orientation="horizontal" />
-        </ScrollArea>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="pt-4 flex items-center justify-center">
-        {isCalculating && remainingSongList.current.length && (
-          <Button disabled={true}>Generate playlist</Button>
-        )}
-
-        {!remainingSongList.current.length && !isCalculating && (
-          <Link href={{ pathname: "playlist", query: { type: preferences } }}>
-            <Button>Generate playlist</Button>
+        {!endedSelection ? (
+          <Button className="text-large text-white p-4 " disabled={true}>
+            Generate playlist
+          </Button>
+        ) : (
+          <Link
+            href={{ pathname: "playlist", query: { type: preferences as any } }}
+          >
+            <Button className="text-large text-white p-4">
+              Generate playlist
+            </Button>
           </Link>
         )}
       </div>

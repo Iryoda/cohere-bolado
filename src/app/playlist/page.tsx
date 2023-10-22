@@ -22,11 +22,7 @@ export default function MountedPlaylist() {
         try {
           const { data } = await axios.get<Music[]>(
             "https://localhost:3333/api",
-            {
-              params: {
-                preferences: params.preferences,
-              },
-            }
+            { params: { preferences: params.preferences } }
           );
 
           setMusics(data);
