@@ -14,26 +14,27 @@ const getNNeighbors = (
   const neighbors: Song[] = [];
   const unvisitedSongs: Song[] = [...options];
 
-  while (neighbors.length < n) {
-    const index = getRandomInt(unvisitedSongs.length);
-    const [selectedSong] = unvisitedSongs.splice(index, 1);
+  let lowestUnreachedDistance = Infinity;
 
+  while (neighbors.length < n) {
     // If all songs visited, break
     if (!unvisitedSongs.length) {
-      const notSelectedSongs = options.filter((o) => !neighbors.includes(o));
-      const realMaxDistance = Math.max(
-        ...notSelectedSongs.map((s) =>
-          euclideanDistance(embedding, s.embedding)
-        )
-      );
       console.info(
-        `Visited all songs, breaking (searched maxDistance = ${maxDistance}, next bigger maxDistance = ${realMaxDistance}) (Searched ${n} but found ${neighbors.length})`
+        `Visited all songs, breaking (searchedMaxDistance = ${maxDistance}, lowestUnreachedDistance = ${lowestUnreachedDistance}, searched ${n} but found ${neighbors.length})`
       );
       break;
     }
 
+    const index = getRandomInt(unvisitedSongs.length);
+    const [selectedSong] = unvisitedSongs.splice(index, 1);
+
     const distance = euclideanDistance(embedding, selectedSong.embedding);
-    if (distance > maxDistance) continue;
+
+    if (distance > maxDistance) {
+      if (distance < lowestUnreachedDistance)
+        lowestUnreachedDistance = distance;
+      continue;
+    }
 
     neighbors.push(selectedSong);
   }
