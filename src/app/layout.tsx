@@ -8,9 +8,10 @@ export default function RootLayout(props: React.PropsWithChildren) {
   return (
     <html>
       <body>
-        <StyledComponentsRegistry>{props.children}</StyledComponentsRegistry>
-        <GlobalStyles />
-        <AppProvider>{props.children}</AppProvider>
+        <StyledComponentsRegistry>
+          <GlobalStyles />
+          <AppProvider>{props.children}</AppProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
