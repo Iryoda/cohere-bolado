@@ -10,6 +10,7 @@
 /files
 files/*
 
+/dist
 
 # next.js
 /.next/

@@ -12,10 +12,8 @@ datasource db {
   extensions = [vector()]
 }
 
-model Music {
+model music{
   id Int @id @default(autoincrement())
   name String  
-  embeddings Unsupported("vector")? 
-
-  @@index([embeddings])
+  embeddings Unsupported("vector")
 }
