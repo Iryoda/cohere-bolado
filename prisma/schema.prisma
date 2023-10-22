@@ -15,5 +15,7 @@ datasource db {
 model music{
   id Int @id @default(autoincrement())
   name String  
+  author String
+  year String
   embeddings Unsupported("vector")
 }

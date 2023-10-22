@@ -40,11 +40,7 @@ export function SongArtwork({
       </div>
 
       <a
-        // href={`https://www.youtube.com/results?search_query=${`${song.name} ${song.artist}`.replace(
-        //   /\s/g,
-        //   "+"
-        // )}`}
-        href={`https://www.youtube.com/results?search_query=${`${song.name}`.replace(
+        href={`https://www.youtube.com/results?search_query=${`${song.name} ${song.author}`.replace(
           /\s/g,
           "+"
         )}`}

@@ -39,6 +39,8 @@ export async function GET(req: NextRequest) {
 
     const musics = rows.rows.map((r) => ({
       name: r.name,
+      author: r.author,
+      year: r.year,
     }));
 
     return NextResponse.json(musics);
