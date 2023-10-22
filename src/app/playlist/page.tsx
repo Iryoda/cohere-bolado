@@ -64,6 +64,19 @@ export default function MountedPlaylist() {
         {!queryState.isLoading &&
           (!queryState.isError ? (
             <table>
+              <tr className="text-lg border-b-slate-200 border-b-2 leading-loose">
+                <td></td>
+                <td>
+                  <strong>name</strong>
+                </td>
+                <td>
+                  <strong>author</strong>
+                </td>
+                <td>
+                  <strong>year</strong>
+                </td>
+              </tr>
+
               {musics.map((m, i) => (
                 <tr
                   className="text-lg border-b-slate-200 border-b-2 leading-loose"
@@ -73,6 +86,8 @@ export default function MountedPlaylist() {
                     <b className="text-gray-500">{i + 1}</b>
                   </td>
                   <td>{m.name}</td>
+                  <td>{m.author}</td>
+                  <td>{m.year}</td>
                 </tr>
               ))}
             </table>

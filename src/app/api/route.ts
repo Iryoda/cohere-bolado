@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
     // console.log(res);
 
     const rows = await db.query(
-      `SELECT * FROM music ORDER BY embeddings <-> '${inputEmebedding}' LIMIT 25`
+      `SELECT * FROM music ORDER BY embeddings <-> '${inputEmebedding}' LIMIT 40`
     );
 
     const musics = rows.rows.map((r) => ({
