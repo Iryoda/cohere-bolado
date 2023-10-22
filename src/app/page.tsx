@@ -64,11 +64,11 @@ export default function Playlist() {
     <div className="p-8 h-screen flex flex-col justify-between">
       <div className="mt-6 space-y-1 items-center">
         <h2 className="text-2xl font-semibold tracking-tight">
-          Select your music preferences
+          Remove the music that you dislike the most!
         </h2>
-        <p className="text-sm text-muted-foreground">
-          Sambify tailors its predictions on your playlist needs! Select what
-          song you&apos;d like to drop
+
+        <p className="text-md text-muted-foreground">
+          and we will make a nice playlist for you
         </p>
       </div>
 
@@ -98,7 +98,11 @@ export default function Playlist() {
         </div>
       </div>
 
-      <div className="pt-4 flex items-center justify-center">
+      <div className="pt-4 flex flex-col items-center justify-center">
+        <p className="pb-4">
+          <strong>Round</strong>: {counter.current + 1 + "/" + 5}
+        </p>
+
         {!endedSelection ? (
           <Button className="text-large text-white p-4 " disabled={true}>
             Generate playlist
