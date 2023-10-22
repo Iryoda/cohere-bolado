@@ -22,8 +22,16 @@ export type Emotions =
   | "valence"
   | "energy";
 
+export enum EmotionLevel {
+  VeryLow = "Very Low",
+  Low = "Low",
+  Medium = "Medium",
+  High = "High",
+  VeryHigh = "Very High",
+}
+
 export type Song = {
   name: string;
   embedding: number[];
-  emotions: { [key in Emotions]: number };
+  emotions: { [key in Emotions]: EmotionLevel };
 };
