@@ -17,9 +17,6 @@ const getNNeighbors = (
   let lowestUnreachedDistance = -Infinity;
 
   while (neighbors.length < n) {
-    const index = getRandomInt(unvisitedSongs.length);
-    const [selectedSong] = unvisitedSongs.splice(index, 1);
-
     // If all songs visited, break
     if (!unvisitedSongs.length) {
       console.info(
@@ -27,6 +24,9 @@ const getNNeighbors = (
       );
       break;
     }
+
+    const index = getRandomInt(unvisitedSongs.length);
+    const [selectedSong] = unvisitedSongs.splice(index, 1);
 
     const distance = euclideanDistance(embedding, selectedSong.embedding);
 
