@@ -1,8 +1,9 @@
-import { MusicToChose } from "@/interface/Music";
+import { MusicToChoose } from "@/interface/Music";
 
-export const initialSongs: MusicToChose[] = [
+export const initialSongs: MusicToChoose[] = [
   {
     name: "1-800-273-8255",
+    author: "Logic",
     url: "/1-800-273-8255-cover.jpeg",
     emotions: {
       dating: "Very Low",
@@ -31,6 +32,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "7 years",
+    author: "Lukas Graham",
     url: "/7-years-cover.jpeg",
     emotions: {
       dating: "High",
@@ -59,6 +61,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "can i be him",
+    author: "James Arthur",
     url: "/can-i-be-him-cover.jpeg",
     emotions: {
       dating: "High",
@@ -87,6 +90,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "chunky",
+    author: "Bruno Mars",
     url: "/chunky-cover.jpeg",
     emotions: {
       dating: "Low",
@@ -115,6 +119,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "copycat",
+    author: "Billie Eilish",
     url: "/copycat-cover.jpeg",
     emotions: {
       dating: "Very Low",
@@ -143,6 +148,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "happier",
+    author: "Ed Sheeran",
     url: "/happier-cover.jpeg",
     emotions: {
       dating: "Very Low",
@@ -171,6 +177,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "history",
+    author: "One Direction",
     url: "/history-cover.png",
     emotions: {
       dating: "Very Low",
@@ -199,6 +206,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "ho hey",
+    author: "The Lumineers",
     url: "/ho-hey-cover.jpeg",
     emotions: {
       dating: "Low",
@@ -227,6 +235,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "layla (with j. j. cale)",
+    author: "Eric Clapton",
     url: "/layla-cover.jpeg",
     emotions: {
       dating: "Very Low",
@@ -255,6 +264,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "mercy",
+    author: "Shawn Mendes",
     url: "/mercy-cover.jpeg",
     emotions: {
       dating: "Very Low",
@@ -283,6 +293,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "paris",
+    author: "The Chainsmokers",
     url: "/paris-cover.png",
     emotions: {
       dating: "Very Low",
@@ -311,6 +322,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "sorry for party rocking",
+    author: "LMFAO",
     url: "/party-rock-cover.jpeg",
     emotions: {
       dating: "Low",
@@ -339,6 +351,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "payphone",
+    author: "Maroon 5",
     url: "/payphone-cover.jpeg",
     emotions: {
       dating: "Medium",
@@ -367,6 +380,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "pretty hurts",
+    author: "Beyoncé",
     url: "/pretty-hurts-cover.jpeg",
     emotions: {
       dating: "Very Low",
@@ -395,6 +409,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "psycho pt. 2",
+    author: "Russ",
     url: "/psycho-pt-2-cover.png",
     emotions: {
       dating: "Low",
@@ -423,6 +438,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "radioactive",
+    author: "Imagine Dragons",
     url: "/radioactive-cover.jpeg",
     emotions: {
       dating: "Very Low",
@@ -451,6 +467,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "what they want",
+    author: "Russ",
     url: "/what-they-want-cover.png",
     emotions: {
       dating: "Very Low",
@@ -479,6 +496,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "whatever it takes",
+    author: "Imagine Dragons",
     url: "/whatever-it-takes-cover.jpeg",
     emotions: {
       dating: "Very Low",
@@ -507,6 +525,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "young wild & free (feat. bruno mars)",
+    author: "Snoop Dogg",
     url: "/young-wild-and-free-cover.jpeg",
     emotions: {
       dating: "Medium",
@@ -535,6 +554,7 @@ export const initialSongs: MusicToChose[] = [
   },
   {
     name: "your body is a wonderland",
+    author: "John Mayer",
     url: "/your-body-is-a-wonderland-cover.jpeg",
     emotions: {
       dating: "Low",

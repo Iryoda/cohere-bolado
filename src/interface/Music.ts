@@ -5,8 +5,9 @@ export type Music = {
   name: string;
 };
 
-export type MusicToChose = {
+export type MusicToChoose = {
   name: string;
+  author: string;
   url: string;
   emotions: Song["emotions"];
 };
