@@ -1,16 +1,19 @@
+import db from "@/utils/pg";
 import prisma from "@/utils/prisma";
 import cohere from "cohere-ai";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { Client } from "pg";
 
-export async function GET(req: Request) {
-  const formData = await req.formData();
+export async function GET(req: NextRequest) {
+  const preferences = req.nextUrl.searchParams.get("preferences");
 
-  const preferences = formData.get("preference");
+  console.log(preferences);
 
-  if (!preferences)
+  if (!preferences) {
     return new Response("PUTSS", {
       status: 400,
     });
+  }
 
   try {
     if (!process.env.COHERE_KEY)
@@ -22,17 +25,30 @@ export async function GET(req: Request) {
 
     const response = await cohere.embed({
       model: "embed-multilingual-v2.0",
-      texts: [preferences.toString()],
+      texts: [preferences],
     });
 
-    const inputEmebedding = `[${response.body.embeddings[1]}]`;
+    const inputEmebedding = `[${response.body.embeddings[0]}]`;
 
-    const result =
-      await prisma.$queryRaw`SELECT * FROM music ORDER BY embbedings <-> VECTOR(${inputEmebedding}) LIMIT 10`;
+    db.connect();
 
-    console.log(result);
+    // const res =
+    //   await prisma.$queryRaw`SELECT * FROM music ORDER BY embeddings <-> VECTOR(${inputEmebedding}) LIMIT 10`;
+    // console.log(res);
 
-    return NextResponse.json(result);
+    const rows = await db.query(
+      `SELECT * FROM music ORDER BY embeddings <-> '${inputEmebedding}' LIMIT 10`
+    );
+
+    const musics = rows.rows.map((r) => ({
+      name: r.name,
+    }));
+
+    await db.end();
+
+    console.log(musics);
+
+    return NextResponse.json(musics);
   } catch (error) {
     console.log(error);
 
