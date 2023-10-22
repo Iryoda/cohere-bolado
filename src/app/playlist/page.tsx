@@ -1,65 +1,58 @@
-import { promises as fs } from "fs"
-import path from "path"
-import { Metadata } from "next"
-import Image from "next/image"
-import { z } from "zod"
+"use client";
 
-import { columns } from "./components/columns"
-import { DataTable } from "./components/data-table"
-import { UserNav } from "./components/user-nav"
-import { taskSchema } from "./data/schema"
+import { Metadata } from "next";
+import axios from "axios";
 
-export const metadata: Metadata = {
-  title: "Tasks",
-  description: "A task and issue tracker build using Tanstack Table.",
-}
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { Music } from "@/interface/Music";
 
-// Simulate a database read for tasks.
-async function getTasks() {
-  const data = await fs.readFile(
-    path.join(process.cwd(), "src/data/tasks.json")
-  )
+export default function MountedPlaylist() {
+  const { query } = useRouter();
 
-  const tasks = JSON.parse(data.toString())
+  const [musics, setMusics] = useState<Music[]>([]);
+  const [queryState, setQueryState] = useState({
+    isLoading: true,
+    isError: false,
+  });
 
-  return z.array(taskSchema).parse(tasks)
-}
+  useEffect(() => {
+    const handle = async () => {
+      if (query) {
+        try {
+          const { data } = await axios.get<Music[]>(
+            "https://localhost:3333/api",
+            {
+              params: {
+                preferences: query.preferences,
+              },
+            }
+          );
 
-export default async function MountedPlaylist() {
-  const tasks = await getTasks()
+          setMusics(data);
+        } catch (error) {
+          setQueryState({
+            isLoading: false,
+            isError: true,
+          });
+        }
+      }
+    };
+
+    handle();
+  });
 
   return (
     <>
-      <div className="md:hidden">
-        <Image
-          src="/examples/tasks-light.png"
-          width={1280}
-          height={998}
-          alt="Playground"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/examples/tasks-dark.png"
-          width={1280}
-          height={998}
-          alt="Playground"
-          className="hidden dark:block"
-        />
-      </div>
       <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight">Welcome back!</h2>
-            <p className="text-muted-foreground">
-              Here&apos;s a list of your tasks for this month!
-            </p>
-          </div>
-          <div className="flex items-center space-x-2">
-            <UserNav />
+            <h2 className="text-2xl font-bold tracking-tight">Sua Playlist!</h2>
           </div>
         </div>
-        <DataTable data={tasks} columns={columns} />
+
+        {/* <DataTable data={tasks} columns={columns} /> */}
       </div>
     </>
-  )
+  );
 }

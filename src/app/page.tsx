@@ -3,12 +3,9 @@
 import { Separator } from "@/registry/new-york/ui/separator";
 
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 export default function Home() {
-  // const router = useRouter();
-
   return (
     <>
       <div className="mt-6 space-y-1">
