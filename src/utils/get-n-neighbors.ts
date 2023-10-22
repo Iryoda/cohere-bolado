@@ -23,7 +23,7 @@ const getNNeighbors = (
     // If all songs visited, break
     if (!unvisitedSongs.length) {
       console.info(
-        `Visited all songs, breaking (searchedMaxDistance = ${searchedMaxDistance}, lowestUnreachedDistance = ${lowestUnreachedDistance}) (searched ${n} but found ${neighbors.length})`
+        `Visited all songs, breaking (searchedMaxDistance = ${searchedMaxDistance}, lowestUnreachedDistance = ${lowestUnreachedDistance}, searched ${n} but found ${neighbors.length})`
       );
       break;
     }
