@@ -1,12 +1,16 @@
 "use client";
 
-import { Metadata } from "next";
 import axios from "axios";
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Music } from "@/interface/Music";
 import { getRandomInt } from "@/utils/get-n-neighbors";
+
+import youtubeIcon from "public/logo_youtube_icon.png";
+import spotifyIcon from "public/logo_spotify_icon.png";
+import Image from "next/image";
+import { generateYoutubeUrl, generateSpotifyUrl } from "@/utils/generate-url";
 
 const emojiList = ["😳", "❤️", "🎧", "🎶"];
 
@@ -64,30 +68,47 @@ export default function MountedPlaylist() {
         {!queryState.isLoading &&
           (!queryState.isError ? (
             <table>
-              <tr className="text-lg border-b-slate-200 border-b-2 leading-loose">
+              <tr className="text-lg bg-blue-50 border-b-slate-200 border-b-2 leading-loose">
                 <td></td>
                 <td>
-                  <strong>name</strong>
+                  <strong>Name</strong>
                 </td>
                 <td>
-                  <strong>author</strong>
+                  <strong>Author</strong>
                 </td>
                 <td>
-                  <strong>year</strong>
+                  <strong>Year</strong>
+                </td>
+                <td className="text-center">
+                  <strong>Links</strong>
                 </td>
               </tr>
 
               {musics.map((m, i) => (
                 <tr
-                  className="text-lg border-b-slate-200 border-b-2 leading-loose"
+                  className="text-lg hover:bg-blue-50 border-b-slate-200 border-b-2 leading-loose"
                   key={m.id}
                 >
                   <td>
                     <b className="text-gray-500">{i + 1}</b>
                   </td>
-                  <td>{m.name}</td>
-                  <td>{m.author}</td>
-                  <td>{m.year}</td>
+                  <td className="capitalize">{m.name}</td>
+                  <td className="capitalize text-gray-700">{m.author}</td>
+                  <td className="text-gray-400">{m.year}</td>
+                  <td className="flex flex-row justify-center items-center px-2 pt-1">
+                    <a
+                      href={generateSpotifyUrl(`${m.name} ${m.author}`)}
+                      target="_blank"
+                    >
+                      <Image className="w-7" src={spotifyIcon} alt="Spotify" />
+                    </a>
+                    <a
+                      href={generateYoutubeUrl(`${m.name} ${m.author}`)}
+                      target="_blank"
+                    >
+                      <Image className="w-7 ml-4" src={youtubeIcon} alt="YouTube" />
+                    </a>
+                  </td>
                 </tr>
               ))}
             </table>
