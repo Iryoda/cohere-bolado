@@ -7,6 +7,9 @@
 
 # testing
 /coverage
+/files
+files/*
+
 
 # next.js
 /.next/
