@@ -32,7 +32,7 @@ export function calculateSearchParams(
 ) {
   let result = "";
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 22; i++) {
     let a = 0;
     if (vec1[i] === 'Very High') a = 5;
     else if (vec1[i] === 'High') a = 2;
