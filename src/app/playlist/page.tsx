@@ -3,12 +3,17 @@
 import { Metadata } from "next";
 import axios from "axios";
 
-import { useParams, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { Music } from "@/interface/Music";
+import { getRandomInt } from "@/utils/get-n-neighbors";
+
+const emojiList = ["😳", "❤️", "🎧", "🎶"];
 
 export default function MountedPlaylist() {
   const searchParams = useSearchParams();
+
+  const emoji = useRef(emojiList[getRandomInt(emojiList.length)]);
 
   const [musics, setMusics] = useState<Music[]>([]);
   const [queryState, setQueryState] = useState({
@@ -47,15 +52,28 @@ export default function MountedPlaylist() {
       <div className="h-full flex flex-col space-y-8 p-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight">Sua Playlist!</h2>
+            <h2 className="text-2xl font-bold tracking-tight">
+              Your Playlist!
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              With much care {emoji.current}
+            </p>
           </div>
         </div>
 
         {!queryState.isLoading &&
           (!queryState.isError ? (
             <table>
-              {musics.map((m) => (
-                <tr key={m.id}>{m.name}</tr>
+              {musics.map((m, i) => (
+                <tr
+                  className="text-lg border-b-slate-200 border-b-2 leading-loose"
+                  key={m.id}
+                >
+                  <td>
+                    <b className="text-gray-500">{i + 1}</b>
+                  </td>
+                  <td>{m.name}</td>
+                </tr>
               ))}
             </table>
           ) : (

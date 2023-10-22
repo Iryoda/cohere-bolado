@@ -1,7 +1,7 @@
 import { Song } from "@/interfaces";
 import euclideanDistance from "./euclidean-distance";
 
-const getRandomInt = (max: number) => Math.floor(Math.random() * max);
+export const getRandomInt = (max: number) => Math.floor(Math.random() * max);
 
 const getNNeighbors = (
   n: number,
