@@ -2,6 +2,7 @@
 
 import StyledComponentsRegistry from "../lib/registry";
 import GlobalStyles from "@/styles";
+import './globals.css';
 import AppProvider from "@/hooks";
 
 export default function RootLayout(props: React.PropsWithChildren) {
