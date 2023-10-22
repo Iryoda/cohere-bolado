@@ -1,6 +1,7 @@
 export const initialSongs = [
   {
     name: "1-800-273-8255",
+    url: "/1-800-273-8255-cover.jpeg",
     embeddings: {
       dating: "Very Low",
       violence: "Very Low",
@@ -28,6 +29,7 @@ export const initialSongs = [
   },
   {
     name: "7 years",
+    url: "/7-years-cover.jpeg",
     embeddings: {
       dating: "High",
       violence: "Very Low",
@@ -55,6 +57,7 @@ export const initialSongs = [
   },
   {
     name: "can i be him",
+    url: "/can-i-be-him-cover.jpeg",
     embeddings: {
       dating: "High",
       violence: "Very Low",
@@ -82,6 +85,7 @@ export const initialSongs = [
   },
   {
     name: "chunky",
+    url: "/chunky-cover.jpeg",
     embeddings: {
       dating: "Low",
       violence: "Very Low",
@@ -109,6 +113,7 @@ export const initialSongs = [
   },
   {
     name: "copycat",
+    url: "/copycat-cover.jpeg",
     embeddings: {
       dating: "Very Low",
       violence: "Very Low",
@@ -136,6 +141,7 @@ export const initialSongs = [
   },
   {
     name: "happier",
+    url: "/happier-cover.jpeg",
     embeddings: {
       dating: "Very Low",
       violence: "Very Low",
@@ -163,6 +169,7 @@ export const initialSongs = [
   },
   {
     name: "history",
+    url: "/history-cover.png",
     embeddings: {
       dating: "Very Low",
       violence: "Very Low",
@@ -190,6 +197,7 @@ export const initialSongs = [
   },
   {
     name: "ho hey",
+    url: "/ho-hey-cover.jpeg",
     embeddings: {
       dating: "Low",
       violence: "Very Low",
@@ -217,6 +225,7 @@ export const initialSongs = [
   },
   {
     name: "layla (with j. j. cale)",
+    url: "/layla-cover.jpeg",
     embeddings: {
       dating: "Very Low",
       violence: "Very Low",
@@ -244,6 +253,7 @@ export const initialSongs = [
   },
   {
     name: "mercy",
+    url: "/mercy-cover.jpeg",
     embeddings: {
       dating: "Very Low",
       violence: "Very Low",
@@ -271,6 +281,7 @@ export const initialSongs = [
   },
   {
     name: "paris",
+    url: "/paris-cover.png",
     embeddings: {
       dating: "Very Low",
       violence: "Very Low",
@@ -298,6 +309,7 @@ export const initialSongs = [
   },
   {
     name: "sorry for party rocking",
+    url: "/party-rock-cover.jpeg",
     embeddings: {
       dating: "Low",
       violence: "Very Low",
@@ -325,6 +337,7 @@ export const initialSongs = [
   },
   {
     name: "payphone",
+    url: "/payphone-cover.jpeg",
     embeddings: {
       dating: "Medium",
       violence: "Medium",
@@ -352,6 +365,7 @@ export const initialSongs = [
   },
   {
     name: "pretty hurts",
+    url: "/pretty-hurts-cover.jpeg",
     embeddings: {
       dating: "Very Low",
       violence: "Very Low",
@@ -379,6 +393,7 @@ export const initialSongs = [
   },
   {
     name: "psycho pt. 2",
+    url: "/psycho-pt-2-cover.png",
     embeddings: {
       dating: "Low",
       violence: "Very Low",
@@ -406,6 +421,7 @@ export const initialSongs = [
   },
   {
     name: "radioactive",
+    url: "/radioactive-cover.jpeg",
     embeddings: {
       dating: "Very Low",
       violence: "Medium",
@@ -433,6 +449,7 @@ export const initialSongs = [
   },
   {
     name: "what they want",
+    url: "/what-they-want-cover.png",
     embeddings: {
       dating: "Very Low",
       violence: "Low",
@@ -460,6 +477,7 @@ export const initialSongs = [
   },
   {
     name: "whatever it takes",
+    url: "/whatever-it-takes-cover.jpeg",
     embeddings: {
       dating: "Very Low",
       violence: "Low",
@@ -487,6 +505,7 @@ export const initialSongs = [
   },
   {
     name: "young wild & free (feat. bruno mars)",
+    url: "/young-wild-and-free-cover.jpeg",
     embeddings: {
       dating: "Medium",
       violence: "Medium",
@@ -514,6 +533,7 @@ export const initialSongs = [
   },
   {
     name: "your body is a wonderland",
+    url: "/your-body-is-a-wonderland-cover.jpeg",
     embeddings: {
       dating: "Low",
       violence: "Medium",
