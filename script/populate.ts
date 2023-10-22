@@ -22,11 +22,11 @@ const Handle = async () => {
         await prisma.$executeRaw`INSERT INTO MUSIC (name, embeddings) VALUES (${data[0]}, Vector(${embbeding}))`;
       })
       .on("end", () => {
-        console.info("Não FODEU");
+        console.info("Deu certo");
         return res("OK");
       })
       .on("error", (err: any) => {
-        console.info("FODEU", err);
+        console.info("Não deu certo", err);
         return rej();
       });
   });

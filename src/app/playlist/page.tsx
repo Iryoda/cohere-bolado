@@ -33,10 +33,7 @@ export default function MountedPlaylist() {
             isError: false,
           });
         } catch (error) {
-          setQueryState({
-            isLoading: false,
-            isError: true,
-          });
+          setQueryState({ isLoading: false, isError: true });
         }
       }
     };
@@ -54,19 +51,18 @@ export default function MountedPlaylist() {
           </div>
         </div>
 
-        {!queryState.isLoading && queryState.isError && (
-          <div className="flex items-center justify-center h-full w-full">
-            <h1>Algo deu Errado :^(</h1>
-          </div>
-        )}
-
-        {!queryState.isLoading && !queryState.isError && (
-          <table>
-            {musics.map((m) => (
-              <tr key={m.id}>{m.name}</tr>
-            ))}
-          </table>
-        )}
+        {!queryState.isLoading &&
+          (!queryState.isError ? (
+            <table>
+              {musics.map((m) => (
+                <tr key={m.id}>{m.name}</tr>
+              ))}
+            </table>
+          ) : (
+            <div className="flex items-center justify-center h-full w-full">
+              <h1>Algo deu Errado :^(</h1>
+            </div>
+          ))}
 
         {/* <DataTable data={tasks} columns={columns} /> */}
       </div>
