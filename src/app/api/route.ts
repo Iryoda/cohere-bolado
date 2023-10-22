@@ -30,6 +30,7 @@ export async function GET(req: NextRequest) {
 
     db.connect();
 
+    // Eu sou burro não está funcionando
     // const res =
     //   await prisma.$queryRaw`SELECT * FROM music ORDER BY embeddings <-> VECTOR(${inputEmebedding}) LIMIT 10`;
     // console.log(res);

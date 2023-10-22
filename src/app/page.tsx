@@ -12,6 +12,7 @@ export default function Home() {
         <h2 className="text-2xl font-semibold tracking-tight">
           Welcome to Sambify
         </h2>
+
         <p className="text-sm text-muted-foreground">
           The plaform that chooses the right playlist for you, with AI
         </p>

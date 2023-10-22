@@ -3,12 +3,12 @@
 import { Metadata } from "next";
 import axios from "axios";
 
-import { useRouter } from "next/router";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Music } from "@/interface/Music";
 
 export default function MountedPlaylist() {
-  const { query } = useRouter();
+  const params = useParams();
 
   const [musics, setMusics] = useState<Music[]>([]);
   const [queryState, setQueryState] = useState({
@@ -18,13 +18,13 @@ export default function MountedPlaylist() {
 
   useEffect(() => {
     const handle = async () => {
-      if (query) {
+      if (params) {
         try {
           const { data } = await axios.get<Music[]>(
             "https://localhost:3333/api",
             {
               params: {
-                preferences: query.preferences,
+                preferences: params.preferences,
               },
             }
           );
@@ -44,12 +44,26 @@ export default function MountedPlaylist() {
 
   return (
     <>
-      <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
+      <div className="h-full flex flex-col space-y-8 p-8 md:flex">
         <div className="flex items-center justify-between space-y-2">
           <div>
             <h2 className="text-2xl font-bold tracking-tight">Sua Playlist!</h2>
           </div>
         </div>
+
+        {!queryState.isLoading && queryState.isError && (
+          <div className="flex items-center justify-center h-full w-full">
+            <h1>Algo deu Errado :^(</h1>
+          </div>
+        )}
+
+        {!queryState.isLoading && !queryState.isError && (
+          <table>
+            {musics.map((m) => (
+              <tr key={m.id}>{m.name}</tr>
+            ))}
+          </table>
+        )}
 
         {/* <DataTable data={tasks} columns={columns} /> */}
       </div>
